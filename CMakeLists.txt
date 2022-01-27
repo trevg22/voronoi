@@ -3,3 +3,4 @@ project(voronoi LANGUAGES C)
 
 add_library(voronoi STATIC)
 add_subdirectory(src)
+target_include_directories(voronoi INTERFACE src)
