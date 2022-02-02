@@ -6,4 +6,6 @@ target_sources(voronoi PRIVATE
     VorDiagram.cpp
     VorDiagram.h
     Polygon.h
+    Polygon.cpp
+    oldVor.c
     )
