@@ -6,6 +6,7 @@
 #include <iostream>
 #include <sstream>
 #include"oldVor.c"
+#include<vector>
 
 /*void VorDiagram::ReadCSV(const std::string &filename) {
   std::ifstream file(filename);
@@ -34,6 +35,10 @@
   numPoints = count;
 }
 */
+VorDiagram::VorDiagram()
+{
+
+}
 void VorDiagram::ReadCSV(const std::string &fileName)
 {
     const char* file=fileName.c_str();
@@ -42,13 +47,26 @@ void VorDiagram::ReadCSV(const std::string &fileName)
     numPoints=len;
 }
 
+//Currently can only ReadCSV or AddPoints
+void VorDiagram::AddPoints(const std::vector<std::pair<double,double>> &_points)
+{
+    if(points==nullptr)
+    {
+        points=(jcv_point*)malloc(_points.size()*sizeof(jcv_point));
+    }
+
+    for(size_t i=0;i<_points.size();i++)
+    {
+       points[i].x =_points[i].first;
+       points[i].y =_points[i].second;
+    }
+    numPoints+=_points.size();
+}
+
 void VorDiagram::Generate() {
     memset(&diagram, 0, sizeof(jcv_diagram));
     std::cout<<numPoints<<" Points\n";
-    for(size_t i=0;i<numPoints;i++)
-    {
-        printf("%f, %f\n",(points)[i].x,(points)[i].y);
-    }
+    
 
   jcv_diagram_generate(numPoints, (const jcv_point *)points, rect, nullptr,
                        &diagram);
@@ -72,4 +90,9 @@ void VorDiagram::Generate() {
 std::vector<Polygon*> VorDiagram::GetPolygons()
 {
     return polygons;
+}
+
+VorDiagram::~VorDiagram()
+{
+    free(points);
 }
