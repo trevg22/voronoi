@@ -5,8 +5,8 @@
 #include <fstream>
 #include <iostream>
 #include <sstream>
-#include"oldVor.c"
 #include<vector>
+#include"jc_voronoi.h"
 
 /*void VorDiagram::ReadCSV(const std::string &filename) {
   std::ifstream file(filename);
@@ -41,10 +41,10 @@ VorDiagram::VorDiagram()
 }
 void VorDiagram::ReadCSV(const std::string &fileName)
 {
-    const char* file=fileName.c_str();
-    uint32_t len=0;
-    int success=read_input(file,&points,(uint32_t*)&len,&rect);
-    numPoints=len;
+    // const char* file=fileName.c_str();
+    // uint32_t len=0;
+    // int success=read_input(file,&points,(uint32_t*)&len,&rect);
+    // numPoints=len;
 }
 
 //Currently can only ReadCSV or AddPoints

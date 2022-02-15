@@ -7,5 +7,4 @@ target_sources(voronoi PRIVATE
     VorDiagram.h
     Polygon.h
     Polygon.cpp
-    oldVor.c
     )
